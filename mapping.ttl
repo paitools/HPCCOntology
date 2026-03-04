@@ -1,0 +1,439 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix hpcc: <http://example.org/hpcc#> .
+@prefix ex: <http://example.org/individuals#> .
+@prefix ex: <http://example.org/individuals#> .
+@prefix map: <http://example.org/mappings#> .
+
+
+#########################################################################
+#  Subclass
+#########################################################################
+
+map:SubclassMapping a rr:TriplesMap ;
+  rr:logicalTable [ rr:tableName "subclasses" ] ;
+
+  rr:subjectMap [
+    rr:column "Class" ;
+    rr:termType rr:IRI
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:subClassOf ;
+    rr:objectMap [
+      rr:column "rdfs__subClassOf" ;
+      rr:termType rr:IRI
+    ]
+  ] ;
+.
+
+#########################################################################
+#  Observation
+#########################################################################
+
+map:ObservationMapping a rr:TriplesMap ;
+  rr:logicalTable [ rr:tableName "observation" ] ;
+
+  rr:subjectMap [
+    rr:template "http://example.org/observation/{sensor}/{timestamp}" ;
+    rr:class sosa:Observation
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:madeBySensor ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sensor}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:resultTime ;
+    rr:objectMap [ rr:column "timestamp" ; rr:datatype xsd:dateTime ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:hasSimpleResult ;
+    rr:objectMap [ rr:column "value" ; rr:datatype xsd:float ]
+  ] ;
+.
+
+#########################################################################
+#  Platform
+#########################################################################
+
+map:PlatformMapping a rr:TriplesMap ;
+  rr:logicalTable [ rr:tableName "platform" ] ;
+
+  rr:subjectMap [
+    rr:template "http://example.org/individuals#{Individual}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [ rr:constant sosa:Platform ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:hosts ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__hosts}" ]
+  ] ;
+.
+
+#########################################################################
+#  GeneralSensor
+#########################################################################
+
+map:GeneralSensorMapping a rr:TriplesMap ;
+  rr:logicalTable [ rr:tableName "generalsensor" ] ;
+
+  rr:subjectMap [
+    rr:template "http://example.org/individuals#{Individual}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [ rr:constant hpcc:GeneralSensor ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate hpcc:hasTargetValue ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{hpcc__hasTargetValue}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:isHostedBy ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__isHostedBy}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:madeObservation ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__madeObservation}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:observes ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__observes}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ssn:detects ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{ssn__detects}" ]
+  ] ;
+.
+
+#########################################################################
+#  RecoolerSensor
+#########################################################################
+
+map:RecoolerSensorMapping a rr:TriplesMap ;
+  rr:logicalTable [ rr:tableName "recoolersensor" ] ;
+
+  rr:subjectMap [
+    rr:template "http://example.org/individuals#{Individual}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [ rr:constant hpcc:RecoolerSensor ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate hpcc:hasTargetValue ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{hpcc__hasTargetValue}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:isHostedBy ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__isHostedBy}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:madeObservation ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__madeObservation}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:observes ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__observes}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ssn:detects ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{ssn__detects}" ]
+  ] ;
+.
+
+#########################################################################
+#  FreeCoolerSensor
+#########################################################################
+
+map:FreeCoolerSensorMapping a rr:TriplesMap ;
+  rr:logicalTable [ rr:tableName "freecoolersensor" ] ;
+
+  rr:subjectMap [
+    rr:template "http://example.org/individuals#{Individual}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [ rr:constant hpcc:FreeCoolerSensor ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate hpcc:hasTargetValue ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{hpcc__hasTargetValue}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:isHostedBy ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__isHostedBy}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:madeObservation ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__madeObservation}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:observes ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__observes}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ssn:detects ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{ssn__detects}" ]
+  ] ;
+.
+
+#########################################################################
+#  MeanObservation
+#########################################################################
+
+map:MeanObservationMapping a rr:TriplesMap ;
+  rr:logicalTable [ rr:tableName "meanobservation" ] ;
+
+  rr:subjectMap [
+    rr:template "http://example.org/individuals#{Individual}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [ rr:constant hpcc:MeanObservation ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate qudt:hasUnit ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{qudt__hasUnit}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:hasFeatureOfInterest ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__hasFeatureOfInterest}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:hasSimpleResult ;
+    #rr:objectMap [ rr:template "http://example.org/individuals#{sosa__hasSimpleResult}" ]
+	rr:objectMap [ rr:column "sosa__hasSimpleResult" ; rr:datatype xsd:float ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:madeBySensor ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__madeBySensor}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:observedProperty ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__observedProperty}" ]
+  ] ;
+.
+
+#########################################################################
+#  FeatureOfInterest
+#########################################################################
+
+map:FeatureOfInterestMapping a rr:TriplesMap ;
+  rr:logicalTable [ rr:tableName "featureofinterest" ] ;
+
+  rr:subjectMap [
+    rr:template "http://example.org/individuals#{Individual}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [ rr:constant sosa:FeatureOfInterest ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:isFeatureOfInterestOf ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__isFeatureOfInterestOf}" ]
+  ] ;
+.
+
+#########################################################################
+#  HeatPumpSensor
+#########################################################################
+
+map:HeatPumpSensorMapping a rr:TriplesMap ;
+  rr:logicalTable [ rr:tableName "heatpumpsensor" ] ;
+
+  rr:subjectMap [
+    rr:template "http://example.org/individuals#{Individual}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [ rr:constant hpcc:HeatPumpSensor ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate hpcc:hasTargetValue ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{hpcc__hasTargetValue}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:isHostedBy ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__isHostedBy}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:madeObservation ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__madeObservation}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:observes ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__observes}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ssn:detects ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{ssn__detects}" ]
+  ] ;
+.
+
+#########################################################################
+#  HeatExchangerSensor
+#########################################################################
+
+map:HeatExchangerSensorMapping a rr:TriplesMap ;
+  rr:logicalTable [ rr:tableName "heatexchangersensor" ] ;
+
+  rr:subjectMap [
+    rr:template "http://example.org/individuals#{Individual}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [ rr:constant hpcc:HeatExchangerSensor ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate hpcc:hasTargetValue ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{hpcc__hasTargetValue}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:isHostedBy ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__isHostedBy}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:madeObservation ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__madeObservation}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:observes ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__observes}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ssn:detects ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{ssn__detects}" ]
+  ] ;
+.
+
+#########################################################################
+#  PumpSensor
+#########################################################################
+
+map:PumpSensorMapping a rr:TriplesMap ;
+  rr:logicalTable [ rr:tableName "pumpsensor" ] ;
+
+  rr:subjectMap [
+    rr:template "http://example.org/individuals#{Individual}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [ rr:constant hpcc:PumpSensor ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate hpcc:hasTargetValue ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{hpcc__hasTargetValue}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:isHostedBy ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__isHostedBy}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:madeObservation ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__madeObservation}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:observes ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__observes}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ssn:detects ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{ssn__detects}" ]
+  ] ;
+.
+
+#########################################################################
+#  TargetValue
+#########################################################################
+
+map:TargetValueMapping a rr:TriplesMap ;
+  rr:logicalTable [ rr:tableName "targetvalue" ] ;
+
+  rr:subjectMap [
+    rr:template "http://example.org/individuals#{Individual}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [ rr:constant hpcc:TargetValue ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate hpcc:setForSensor ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{hpcc__setForSensor}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate qudt:hasUnit ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{qudt__hasUnit}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate qudt:numericValue ;
+    rr:objectMap [ rr:column "qudt__numericValue" ; rr:datatype xsd:float ]
+  ] ;  
+.
+
+#########################################################################
+#  CoolerSensor
+#########################################################################
+
+map:CoolerSensorMapping a rr:TriplesMap ;
+  rr:logicalTable [ rr:tableName "coolersensor" ] ;
+
+  rr:subjectMap [
+    rr:template "http://example.org/individuals#{Individual}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [ rr:constant hpcc:CoolerSensor ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate hpcc:hasTargetValue ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{hpcc__hasTargetValue}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:isHostedBy ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__isHostedBy}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:madeObservation ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__madeObservation}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:observes ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__observes}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate ssn:detects ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{ssn__detects}" ]
+  ] ;
+.
+
+#########################################################################
+#  ObservableProperty
+#########################################################################
+
+map:ObservablePropertyMapping a rr:TriplesMap ;
+  rr:logicalTable [ rr:tableName "observableproperty" ] ;
+
+  rr:subjectMap [
+    rr:template "http://example.org/individuals#{Individual}" ;
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:objectMap [ rr:constant sosa:ObservableProperty ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate sosa:isObservedBy ;
+    rr:objectMap [ rr:template "http://example.org/individuals#{sosa__isObservedBy}" ]
+  ] ;
+.

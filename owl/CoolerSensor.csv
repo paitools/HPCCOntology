@@ -1,0 +1,15 @@
+Individual;rdf:type;hpcc:hasTargetValue;sosa:isHostedBy;sosa:madeObservation;sosa:observes;ssn:detects
+CoolerReleaseStatusSensor;hpcc:CoolerSensor;nan;Cooler;;Status;
+CoolerFlowInTemperatureSensor;hpcc:CoolerSensor;CoolerMV1TemperatureTargetValue;Cooler;CoolerFlowInTemperatureMean;Temperature;
+CoolerFlowInTemperatureSensor;hpcc:CoolerSensor;CoolerMV1TemperatureTargetTolerance;Cooler;CoolerFlowInTemperatureMean;Temperature;
+CoolerFlowReturnTemperatureSensor;hpcc:CoolerSensor;nan;Cooler;CoolerFlowReturnTemperatureMean;Temperature;
+CoolerUP3StatusSensor;hpcc:CoolerSensor;nan;Cooler;;Status;
+CoolerUP3RotationSpeedSensor;hpcc:CoolerSensor;nan;Cooler;CoolerUP3RotationSpeedMean;RotationSpeed;
+CoolerUP3FlowInPressureSensor;hpcc:CoolerSensor;nan;Cooler;CoolerUP3FlowInPressureMean;Pressure;
+CoolerUP3FlowReturnPressureSensor;hpcc:CoolerSensor;nan;Cooler;CoolerUP3FlowReturnPressureMean;Pressure;
+CoolerMV1StatusSensor;hpcc:CoolerSensor;nan;Cooler;;Status;
+CoolerMV1PositionSensor;hpcc:CoolerSensor;nan;Cooler;CoolerMV1PositionMean;Position;
+CoolerMV19StatusSensor;hpcc:CoolerSensor;nan;Cooler;;Status;
+CoolerMV19PositionSensor;hpcc:CoolerSensor;nan;Cooler;CoolerMV19PositionMean;Position;
+CoolerMV19TemperatureSensor;hpcc:CoolerSensor;CoolerTemperatureTargetValue;Cooler;CoolerMV19TemperatureMean;Temperature;
+CoolerUP3AchievedDifferentialPresureVirtualSensor;hpcc:CoolerSensor;CoolerUP3DifferentialPressureTargetValue;Cooler;CoolerUP3AchievedDifferentialPresureMean;DeltaPressure;

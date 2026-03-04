@@ -1,0 +1,7 @@
+Individual;rdf:type;hpcc:hasTargetValue;sosa:isHostedBy;sosa:madeObservation;sosa:observes;ssn:detects
+ReCoolerStatusSensor;hpcc:RecoolerSensor;;Recooler;;Status;
+ReCoolerRotationSpeedSensor;hpcc:RecoolerSensor;;Recooler;ReCoolerRotationSpeedMean;RotationSpeed;
+ReCoolerFlowInTemperatureSensor;hpcc:RecoolerSensor;;Recooler;ReCoolerFlowInTemperatureMean;Temperature;
+ReCoolerFlowReturnTemperatureSensor;hpcc:RecoolerSensor;;Recooler;ReCoolerFlowReturnTemperatureMean;Temperature;
+ReCoolerFlowInPressureSensor;hpcc:RecoolerSensor;;Recooler;ReCoolerFlowInPressureMean;Pressure;
+ReCoolerFlowReturnPressureSensor;hpcc:RecoolerSensor;;Recooler;ReCoolerFlowReturnPressureMean;Pressure;

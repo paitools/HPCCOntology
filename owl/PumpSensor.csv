@@ -1,0 +1,6 @@
+Individual;rdf:type;hpcc:hasTargetValue;sosa:isHostedBy;sosa:madeObservation;sosa:observes;ssn:detects
+PumpUP1StatusSensor;hpcc:PumpSensor;;PumpUP1;;Status;
+PumpUP1InletPressureSensor;hpcc:PumpSensor;;PumpUP1;PumpUP1InletPressureMean;Pressure;
+PumpUP1OutletPressureSensor;hpcc:PumpSensor;;PumpUP1;PumpUP1OutletPressureMean;Pressure;
+PumpUP1RotationSpeedSensor;hpcc:PumpSensor;;PumpUP1;PumpUP1RotationSpeedMean;RotationSpeed;
+PumpUP1AchievedDifferentialPressureVirtualSensor;hpcc:PumpSensor;PumpUP1DifferentialPressureTargetValue;PumpUP1;PumpUP1AchievedDifferentialPressureMean;DeltaPressure;

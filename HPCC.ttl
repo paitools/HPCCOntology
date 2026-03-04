@@ -1,0 +1,221 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix hpcc: <http://example.org/hpcc#> .
+@prefix ex: <http://example.org/individuals#> . 
+
+<https://paitools.github.io/HPCCOntology/HPCC.owl> a owl:Ontology ;
+	
+	dct:title "HPCC – HPC Cooling Ontology" ;
+	dct:creator [
+        	a foaf:Person ;
+	        foaf:name "Pavle Ivanovic" ;
+        	foaf:mbox <mailto:ivanovip@hsu-hh.de> ;
+	        foaf:homepage <https://orcid.org/0000-0001-7757-094X>
+    	] ;
+	dct:creator [
+        	a foaf:Person ;
+	        foaf:name "Shashini Wanniarachchi" ;
+		foaf:mbox <mailto:wanniars@hsu-hh.de> ;
+        	#foaf:homepage <https://orcid.org/0000-0003-3458-4748>
+	] ;
+	dct:created "2026-02-09"^^xsd:date ;
+	rdfs:comment "The HPCC Ontology provides a semantic model for representing HPC thermal management telemetry. It extends the W3C SSN/SOSA standard to capture HPC cooling concepts, including heat pumps, heat exchangers, pumps, coolers, and re-coolers. Designed for the datacenter thermal management domain, the ontology supports anomaly detection, real-time condition monitoring, and advanced system analytics."@en ;
+	#bibo:doi "10.5281/zenodo.17671852" ;
+	#dct:bibliographicCitation "Pavle Ivanovic, Shashini Wanniarachchi (2026): HPCC – HPC Cooling Ontology. https://doi.org/10.5281/zenodo.17671852" ;
+	dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+
+	foaf:fundedBy ex:DTEC ;
+
+	owl:imports <http://www.w3.org/ns/sosa/> ,
+		        <http://www.w3.org/ns/ssn/> ,
+		        <http://qudt.org/3.0.0/schema/qudt> .
+
+#################################################################
+
+# Ontology Classes
+
+#################################################################
+
+hpcc:FreeCoolerSensor a owl:Class ;
+    rdfs:subClassOf sosa:Sensor ;
+    rdfs:label "Free Cooler Sensor" ;
+	rdfs:comment "Represents sensors monitoring Free Cooler units." .
+
+hpcc:RecoolerSensor a owl:Class ;
+    rdfs:subClassOf sosa:Sensor ;
+    rdfs:label "Recooler Sensor" ;
+	rdfs:comment "Represents sensors monitoring Recooler units." .
+
+hpcc:PumpSensor a owl:Class ;
+    rdfs:subClassOf sosa:Sensor ;
+    rdfs:label "Pump Sensor" ;
+	#owl:disjointWith dbc:Signal ;
+	rdfs:comment "Represents sensors monitoring standalone pump units." .
+	
+hpcc:HeatPumpSensor a owl:Class ;
+    rdfs:subClassOf sosa:Sensor ;
+    rdfs:label "Heat Pump Sensor" ;
+	rdfs:comment "Represents sensors monitoring Heat Pump units." .
+	
+hpcc:CoolerSensor a owl:Class ;
+    rdfs:subClassOf sosa:Sensor ;
+    rdfs:label "Cooler Sensor" ;
+	#owl:disjointWith dbc:SignalLog ;
+	rdfs:comment "Represents sensors monitoring Cooler units." .
+
+hpcc:HeatExchangerSensor a owl:Class ;
+    rdfs:subClassOf sosa:Sensor ;
+    rdfs:label "Heat Exchanger Sensor" ;
+	rdfs:comment "Represents sensors monitoring Heat Exchanger units." .
+
+hpcc:GeneralSensor a owl:Class ;
+    rdfs:subClassOf sosa:Sensor ;
+    rdfs:label "General Sensor" ;
+	rdfs:comment "Represents general sensors capturing system states, statuses, or unit-free measurements." .
+
+hpcc:TargetValue a owl:Class ;
+    rdfs:subClassOf qudt:QuantityValue ;
+    rdfs:label "Target Value" ;
+	rdfs:comment "Represents target values or target tolerances of particular sensors." .
+
+hpcc:MeanObservation a owl:Class ;
+    rdfs:subClassOf sosa:Observation , qudt:QuantityValue ;	
+    rdfs:label "Mean Observation" ;
+	rdfs:comment "Represents the calculated mean values of a particular sensors." .
+
+sosa:Platform a owl:Class ;
+    rdfs:label "Platform" .
+
+sosa:Sensor a owl:Class ;
+#    rdfs:subClassOf ssn:System ;
+    rdfs:label "Sensor" .
+	
+sosa:ObservableProperty a owl:Class ;
+    rdfs:subClassOf ssn:Property ;
+    rdfs:label "ObservableProperty" .
+	
+ssn:System a owl:Class ;
+    rdfs:label "System" .
+
+sosa:Observation a owl:Class ;
+    rdfs:label "Observation" .
+	
+sosa:Stimulus a owl:Class ;
+    rdfs:label "Stimulus" .
+
+sosa:FeatureOfInterest a owl:Class ;
+    rdfs:label "FeatureOfInterest" .
+	
+qudt:QuantityValue a owl:Class ;
+    rdfs:label "Quantity value" .	
+	
+	
+#################################################################
+
+# Object Properties
+
+#################################################################
+
+hpcc:hasTargetValue a owl:ObjectProperty ;
+    rdfs:domain sosa:Sensor ;
+    rdfs:range hpcc:TargetValue ;
+    rdfs:label "has target value" ;
+    rdfs:comment "Links a sensor to its corresponding target value or target tolerance, where the distinction is inferred from the associated measurement unit." .
+
+hpcc:setForSensor a owl:ObjectProperty ;
+    rdfs:range sosa:Sensor ;
+    rdfs:domain hpcc:TargetValue ;
+    rdfs:label "set for sensor" ;
+    rdfs:comment "Inverse of hpcc:hasTargetValue, linking a target value or target tolerance to the corresponding sensor." .
+
+sosa:isHostedBy a owl:ObjectProperty ;
+    rdfs:domain sosa:Sensor ;
+    rdfs:range sosa:Platform ;
+    rdfs:label "is hosted by" .
+
+sosa:hosts a owl:ObjectProperty ;
+    rdfs:domain sosa:Platform ;
+    rdfs:range sosa:Sensor ;
+    rdfs:label "hosts" .
+
+sosa:observes a owl:ObjectProperty ;
+    rdfs:domain sosa:Sensor ;
+    rdfs:range sosa:ObservableProperty ;
+    rdfs:label "observes" .
+
+sosa:isObservedBy a owl:ObjectProperty ;
+    rdfs:domain sosa:ObservableProperty ;
+    rdfs:range sosa:Sensor ;
+    rdfs:label "is observed by" .
+
+sosa:observedProperty a owl:ObjectProperty ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range sosa:ObservableProperty ;
+    rdfs:label "observed property" .
+
+sosa:madeBySensor a owl:ObjectProperty ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range sosa:Sensor ;
+    rdfs:label "made by sensor" .
+
+sosa:madeObservation a owl:ObjectProperty ;
+    rdfs:domain sosa:Sensor ;
+    rdfs:range sosa:Observation ;
+    rdfs:label "made observation" .
+		
+ssn:hasSubSystem a owl:ObjectProperty ;
+    rdfs:domain ssn:System ;
+    rdfs:range ssn:System ;
+    rdfs:label "has subsystem" .	
+
+ssn:detects a owl:ObjectProperty ;
+    rdfs:domain sosa:Sensor ;
+    rdfs:range sosa:Stimulus ;
+    rdfs:label "detects" .
+
+ssn:isProxyFor a owl:ObjectProperty ;
+    rdfs:domain sosa:Stimulus ;
+    rdfs:range sosa:ObservableProperty ;
+    rdfs:label "is proxy for" .
+
+sosa:hasFeatureOfInterest a owl:ObjectProperty ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range sosa:FeatureOfInterest ;
+    rdfs:label "has feature of interest" .
+
+sosa:isFeatureOfInterestOf a owl:ObjectProperty ;
+    rdfs:domain sosa:FeatureOfInterest ;
+    rdfs:range sosa:Observation ;
+    rdfs:label "is feature of interest of" .
+
+qudt:hasUnit a owl:ObjectProperty ;
+    rdfs:range qudt:Unit ;
+    rdfs:label "has unit" .
+
+#################################################################
+
+# Data Properties
+
+#################################################################
+
+
+sosa:hasSimpleResult a owl:DatatypeProperty ;
+    rdfs:domain sosa:Observation ;
+    rdfs:label "has simple result" .
+
+sosa:resultTime a owl:DatatypeProperty ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "result time" .
+	
+qudt:numericValue a owl:DatatypeProperty ;
+    rdfs:label "numeric value" .

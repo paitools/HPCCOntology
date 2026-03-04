@@ -1,0 +1,10 @@
+Individual;rdf:type;hpcc:hasTargetValue;sosa:isHostedBy;sosa:madeObservation;sosa:observes;ssn:detects
+GeneralOutSideTemperatureSensor;hpcc:GeneralSensor;;;GeneralOutSideTemperatureMean;Temperature;
+GeneralOperatingModeSensor;hpcc:GeneralSensor;;;;State;
+GeneralRefrigerationRegulationOutputSensor;hpcc:GeneralSensor;;;GeneralRefrigerationRegulationOutputMean;;
+GeneralHeatGenerationActualLevelSensor;hpcc:GeneralSensor;;;;;
+GeneralRefrigerationNumberOfHeatPumpsAvailableSensor;hpcc:GeneralSensor;;;;Count;
+GeneralRefrigerationNumberOfHeatPumpsRequestedSensor;hpcc:GeneralSensor;;;;Count;
+GeneralRefrigerationNumberOfHeatPumpsInOperationSensor;hpcc:GeneralSensor;;;;Count;
+GeneralHeatGenerationAvailableHeatPumpSensor;hpcc:GeneralSensor;;;;Count;
+GeneralHeatGenerationControllingHeatPumpSensor;hpcc:GeneralSensor;;;;Count;

@@ -1,0 +1,13 @@
+Class;rdfs:subClassOf
+http://example.org/hpcc#FreeCoolerSensor;http://www.w3.org/ns/sosa/Sensor
+http://example.org/hpcc#RecoolerSensor;http://www.w3.org/ns/sosa/Sensor
+http://example.org/hpcc#PumpSensor;http://www.w3.org/ns/sosa/Sensor
+http://example.org/hpcc#HeatPumpSensor;http://www.w3.org/ns/sosa/Sensor
+http://example.org/hpcc#CoolerSensor;http://www.w3.org/ns/sosa/Sensor
+http://example.org/hpcc#HeatExchangerSensor;http://www.w3.org/ns/sosa/Sensor
+http://example.org/hpcc#GeneralSensor;http://www.w3.org/ns/sosa/Sensor
+http://example.org/hpcc#TargetValue;http://qudt.org/schema/qudt/QuantityValue
+http://example.org/hpcc#MeanObservation;http://qudt.org/schema/qudt/QuantityValue
+http://example.org/hpcc#MeanObservation;http://www.w3.org/ns/sosa/Observation
+http://www.w3.org/ns/sosa/Sensor;http://www.w3.org/ns/ssn/System
+http://www.w3.org/ns/sosa/ObservableProperty;http://www.w3.org/ns/ssn/Property
