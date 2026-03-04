@@ -31,7 +31,7 @@ Running **HPCCool** on user hardware involves two steps:
 
 ### 1. KGM Population
 
-1. Open the `KGM_Template.xlsx` within `KGM` folder.
+1. Open the `KGM_Template.xlsx` within the `KGM` folder.
    
 2. Populate the template with project-specific instances. If needed, use the provided KGM as a reference.
 
