@@ -7,7 +7,7 @@ HPCCool is a semantic integration framework that bridges ontological system repr
 
 ## HPCC Ontology:
 
-![Alt text](documentation/HPCC_Ontology_v2_crop.png)
+![Alt text](documentation/HPCC_Ontology_v2.png)
 <p align="center"><em>HPCC Ontology: The core concepts and semantic relationships</em></p>
 
 The HPCC Ontology provides a semantic model for representing HPC thermal management telemetry. It extends the W3C SSN/SOSA standard to capture HPC cooling concepts, including heat pumps, heat exchangers, pumps, coolers, and re-coolers. Designed for the datacenter thermal management domain, the ontology supports anomaly detection, real-time condition monitoring, and advanced system analytics.
