@@ -1,0 +1,15 @@
+# 5. What target values are assigned to the cooling sensors?
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX hpcc: <http://example.org/hpcc#>
+PREFIX ex: <http://example.org/individuals#>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+
+SELECT ?sensor ?targetValue
+WHERE {
+  ?sensor a hpcc:CoolerSensor ;
+          hpcc:hasTargetValue ?targetValue .
+		  
+  FILTER(?targetValue != ex:nan)
+}

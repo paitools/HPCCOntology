@@ -1,0 +1,11 @@
+# 1. What types of sensors are installed in the HPC cooling system? 
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX hpcc: <http://example.org/hpcc#>
+
+SELECT DISTINCT ?sensorType
+WHERE {
+
+  ?sensorType rdfs:subClassOf sosa:Sensor .
+}

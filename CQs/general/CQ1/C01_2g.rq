@@ -1,0 +1,10 @@
+# 2. What physical properties do these HPC sensors observe?
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX hpcc: <http://example.org/hpcc#>
+
+SELECT DISTINCT ?sensor ?observedProperty
+WHERE {
+  ?sensor sosa:observes ?observedProperty . 
+}

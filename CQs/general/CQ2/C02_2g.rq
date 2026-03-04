@@ -1,0 +1,14 @@
+# 2. Which units are assigned to the sensor target values? 
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX hpcc: <http://example.org/hpcc#>
+PREFIX ex: <http://example.org/individuals#>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+
+SELECT DISTINCT ?unit 
+WHERE {
+  ?target_value a hpcc:TargetValue ;
+                qudt:hasUnit ?unit .
+  
+}

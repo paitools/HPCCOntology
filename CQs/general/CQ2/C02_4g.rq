@@ -1,0 +1,14 @@
+# 4. Which sensors have dedicated target value tolerances?
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX hpcc: <http://example.org/hpcc#>
+PREFIX ex: <http://example.org/individuals#>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+
+SELECT ?sensor 
+WHERE {
+  ?sensor hpcc:hasTargetValue ?tolerance . 
+  ?tolerance qudt:hasUnit ex:K . 
+  
+}

@@ -1,0 +1,15 @@
+# 5. What unit do the observations of recooler pressure have?
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX hpcc: <http://example.org/hpcc#>
+PREFIX ex: <http://example.org/individuals#>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+
+SELECT DISTINCT ?unit
+WHERE {  
+  ?mean a hpcc:MeanObservation ;
+        sosa:observedProperty ex:Pressure ;
+        qudt:hasUnit ?unit .
+  
+}

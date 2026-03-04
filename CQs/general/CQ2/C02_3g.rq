@@ -1,0 +1,21 @@
+# 3. Which sensor types do not have a hosting platform? 
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX hpcc: <http://example.org/hpcc#>
+PREFIX ex: <http://example.org/individuals#>
+
+
+SELECT DISTINCT ?sensorType
+WHERE {
+  ?sensorType rdfs:subClassOf sosa:Sensor .
+
+  # Try to find a hosted instance of this sensor type
+  OPTIONAL {
+    ?sensor a ?sensorType ;
+            sosa:isHostedBy ?platform .
+  }
+
+  # Keep only sensor types where no hosted instance was found
+  FILTER(!BOUND(?platform))
+}

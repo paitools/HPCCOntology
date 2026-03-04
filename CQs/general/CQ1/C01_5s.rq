@@ -1,0 +1,26 @@
+# 5. What is the current operational state of the system?
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX hpcc: <http://example.org/hpcc#>
+PREFIX ex: <http://example.org/individuals#>
+
+SELECT ?observation ?value ?timestamp
+WHERE {
+  # Step 1: find the latest timestamp
+  {
+    SELECT (MAX(?t) AS ?latestTime)
+    WHERE {
+      ?obs a sosa:Observation ;
+           sosa:madeBySensor ex:GeneralOperatingModeSensor ;
+           sosa:resultTime ?t .
+    }
+  }
+
+  # Step 2: return the observation with that timestamp
+  ?observation a sosa:Observation ;
+               sosa:madeBySensor ex:GeneralOperatingModeSensor ;
+               sosa:resultTime ?timestamp ;
+               sosa:hasSimpleResult ?value .
+
+  FILTER(?timestamp = ?latestTime)
+}

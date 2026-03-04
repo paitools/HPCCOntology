@@ -1,0 +1,19 @@
+# 3. What is the average value of the UP1 inlet pump pressure sensor during the last week?
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX hpcc: <http://example.org/hpcc#>
+PREFIX ex: <http://example.org/individuals#>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+
+SELECT (AVG(xsd:decimal(?value)) AS ?avgValue)
+WHERE {
+  ?observation a sosa:Observation ;
+               sosa:madeBySensor ex:PumpUP1InletPressureSensor ;
+               sosa:resultTime ?timestamp ;
+               sosa:hasSimpleResult ?value .
+
+  # Set your explicit date range here
+  FILTER(?timestamp >= "2026-01-21T00:00:00"^^xsd:dateTime)
+  FILTER(?timestamp <= "2026-01-28T23:59:59"^^xsd:dateTime)
+}
