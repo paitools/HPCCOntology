@@ -1,1 +1,1 @@
-# HPCCool - A Sematic Framework for HPC Cooling Management and Advanced Analytics
+# HPCCool - A Semantic Framework for HPC Cooling Management and Advanced Analytics
