@@ -25,7 +25,7 @@
         	a foaf:Person ;
 	        foaf:name "Shashini Wanniarachchi" ;
 		foaf:mbox <mailto:wanniars@hsu-hh.de> ;
-        	#foaf:homepage <https://orcid.org/0000-0003-3458-4748>
+        	foaf:homepage <https://orcid.org/0000-0002-0827-2057>
 	] ;
 	dct:created "2026-02-09"^^xsd:date ;
 	rdfs:comment "The HPCC Ontology provides a semantic model for representing HPC thermal management telemetry. It extends the W3C SSN/SOSA standard to capture HPC cooling concepts, including heat pumps, heat exchangers, pumps, coolers, and re-coolers. Designed for the datacenter thermal management domain, the ontology supports anomaly detection, real-time condition monitoring, and advanced system analytics."@en ;
@@ -218,4 +218,5 @@ sosa:resultTime a owl:DatatypeProperty ;
     rdfs:label "result time" .
 	
 qudt:numericValue a owl:DatatypeProperty ;
+
     rdfs:label "numeric value" .
