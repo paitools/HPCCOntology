@@ -1,0 +1,16 @@
+# 3. What is the average temperature of the heat exchanger primary flow-in Temperature sensor today?
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <http://example.org/individuals#>
+
+SELECT (AVG(xsd:decimal(?value)) AS ?avgTemperature)
+WHERE {
+  ?observation a sosa:Observation ;
+               sosa:madeBySensor ex:HeatExchangerPrimaryFlowInTemperatureSensor ;
+               sosa:resultTime ?timestamp ;
+               sosa:hasSimpleResult ?value .
+
+  # Keep only observations from today (2026‑01‑21)
+  FILTER(STRSTARTS(STR(?timestamp), "2026-01-21"))
+}

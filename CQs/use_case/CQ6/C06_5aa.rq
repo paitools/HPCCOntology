@@ -1,0 +1,34 @@
+# 5. Which sensors deviated the most from the mean values in the last month? 
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?sensor (MAX(?deviation) AS ?maxDeviation) ?meanValue
+WHERE {
+
+  #Step 1: compute mean per sensor
+  {
+    SELECT ?sensor (AVG(?val) AS ?meanValue)
+    WHERE {
+      ?obs sosa:madeBySensor ?sensor ;
+           sosa:hasSimpleResult ?val ;
+           sosa:resultTime ?time .
+      FILTER(?time >= "2026-01-01T00:00:00"^^xsd:dateTime &&
+             ?time <= "2026-01-31T23:59:59"^^xsd:dateTime)
+    }
+    GROUP BY ?sensor
+  }
+
+  #Step 2: join raw observations and compute deviation
+  ?obs2 sosa:madeBySensor ?sensor ;
+        sosa:hasSimpleResult ?obsValue ;
+        sosa:resultTime ?timestamp .
+
+  FILTER(?timestamp >= "2026-01-01T00:00:00"^^xsd:dateTime &&
+         ?timestamp <= "2026-01-31T23:59:59"^^xsd:dateTime)
+
+  BIND(ABS(?obsValue - ?meanValue) AS ?deviation)
+}
+GROUP BY ?sensor ?meanValue
+ORDER BY DESC(?maxDeviation)
+LIMIT 10

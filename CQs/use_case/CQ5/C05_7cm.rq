@@ -1,0 +1,35 @@
+# 7. Is the Recooler flow-return temperature value greater than the corresponding flow-in one?
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <http://example.org/individuals#>
+
+SELECT ?returnValue ?inValue ((?returnValue) > (?inValue) AS ?isReturnGreater)
+WHERE {
+
+  #1. Latest Return temperature
+  {
+    SELECT ?returnValue
+    WHERE {
+      ?obs1 a sosa:Observation ;
+            sosa:madeBySensor ex:ReCoolerFlowReturnTemperatureSensor ;
+            sosa:resultTime ?t1 ;
+            sosa:hasSimpleResult ?returnValue .
+    }
+    ORDER BY DESC(?t1)
+    LIMIT 1
+  }
+
+  #2. Latest In temperature
+  {
+    SELECT ?inValue
+    WHERE {
+      ?obs2 a sosa:Observation ;
+            sosa:madeBySensor ex:ReCoolerFlowInTemperatureSensor ;
+            sosa:resultTime ?t2 ;
+            sosa:hasSimpleResult ?inValue .
+    }
+    ORDER BY DESC(?t2)
+    LIMIT 1
+  }
+}

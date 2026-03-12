@@ -1,0 +1,45 @@
+# 1. Which time period was critical for the HPC cooling system? 
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <http://example.org/individuals#>
+
+SELECT ?timestamp ?tempIn ?tempReturn ?delta ?maxDelta
+WHERE {
+
+  #Step 1: compute the maximum delta for the month
+  {
+    SELECT (MAX(ABS(?vIn - ?vRet)) AS ?maxDelta)
+    WHERE {
+      ?obsIn sosa:madeBySensor ex:HeatPump06HotWaterFlowInTemperatureSensor ;
+             sosa:hasSimpleResult ?vIn ;
+             sosa:resultTime ?t .
+
+      ?obsRet sosa:madeBySensor ex:HeatPump06HotWaterFlowReturnTemperatureSensor ;
+              sosa:hasSimpleResult ?vRet ;
+              sosa:resultTime ?t .
+
+      FILTER(?t >= "2026-01-01T00:00:00"^^xsd:dateTime &&
+             ?t <= "2026-01-31T23:59:59"^^xsd:dateTime)
+    }
+  }
+
+  #Step 2: compute all deltas for the month
+  ?obsIn2 sosa:madeBySensor ex:HeatPump06HotWaterFlowInTemperatureSensor ;
+          sosa:hasSimpleResult ?tempIn ;
+          sosa:resultTime ?timestamp .
+
+  ?obsRet2 sosa:madeBySensor ex:HeatPump06HotWaterFlowReturnTemperatureSensor ;
+           sosa:hasSimpleResult ?tempReturn ;
+           sosa:resultTime ?timestamp .
+
+  FILTER(?timestamp >= "2026-01-01T00:00:00"^^xsd:dateTime &&
+         ?timestamp <= "2026-01-31T23:59:59"^^xsd:dateTime)
+
+  BIND(ABS(?tempIn - ?tempReturn) AS ?delta)
+
+  #Step 3: keep only values above 90% of the maximum
+  FILTER(?delta > 0.9 * ?maxDelta)
+}
+ORDER BY DESC(?delta)
+

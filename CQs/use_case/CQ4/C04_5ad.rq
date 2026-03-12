@@ -1,0 +1,18 @@
+# 5. Which sensor measurements have achieved negative differential pressure? 
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX hpcc: <http://example.org/hpcc#>
+PREFIX ex: <http://example.org/individuals#>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+
+SELECT ?observation ?obsValue
+WHERE {  
+  ?observation a sosa:Observation ;
+               sosa:madeBySensor ?sensor ;
+               sosa:hasSimpleResult ?obsValue .
+
+  ?sensor sosa:observes ex:DeltaPressure .
+
+  FILTER(?obsValue < 0.0)
+}

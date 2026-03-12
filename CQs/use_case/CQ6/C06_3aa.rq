@@ -1,0 +1,32 @@
+# 3. How does external temperature influence the HPC cooling behavior? 
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <http://example.org/individuals#>
+
+SELECT ?timestamp ?outsideTemp ?coolerTemp ?meanCoolerTemp
+       (ABS(?coolerTemp - ?meanCoolerTemp) AS ?coolerDeviation)
+WHERE {
+
+  #Step 1: mean value of CoolerMV19
+  {
+    SELECT (AVG(?v) AS ?meanCoolerTemp)
+    WHERE {
+      ?obsC sosa:madeBySensor ex:CoolerMV19TemperatureSensor ;
+            sosa:hasSimpleResult ?v ;
+            sosa:resultTime ?tC .
+    }
+  }
+
+  #Step 2: outside temperature observations
+  ?obsOut sosa:madeBySensor ex:GeneralOutSideTemperatureSensor ;
+          sosa:hasSimpleResult ?outsideTemp ;
+          sosa:resultTime ?timestamp .
+
+  #Step 3: CoolerMV19 observations at same timestamp
+  ?obsCooler sosa:madeBySensor ex:CoolerMV19TemperatureSensor ;
+             sosa:hasSimpleResult ?coolerTemp ;
+             sosa:resultTime ?timestamp .
+
+}
+ORDER BY ?timestamp

@@ -1,0 +1,26 @@
+# 4. Which sensors (platforms) have all zero measurements today?
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <http://example.org/individuals#>
+
+SELECT ?platform ?sensor
+WHERE {
+  # Sensor hosted by platform
+  ?sensor sosa:isHostedBy ?platform .
+
+  # Exclude the Status sensor
+  OPTIONAL { ?sensor sosa:observes ?obsProp }
+  FILTER(?obsProp != ex:Status)
+
+  # Observations
+  ?obs sosa:resultTime ?timestamp ;
+       sosa:madeBySensor ?sensor ;
+       sosa:hasSimpleResult ?value .
+
+  # Only observations from 2026‑01‑21
+  FILTER(STRSTARTS(STR(?timestamp), "2026-01-21"))
+}
+GROUP BY ?platform ?sensor
+HAVING (MAX(?value) = 0.0)
+

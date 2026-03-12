@@ -1,0 +1,30 @@
+# 6. What were the Recooler flow-in and flow-return temperature values on 01.01.2026 when the recooler RPM increased over 70 percent? 
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <http://example.org/individuals#>
+
+SELECT ?timestamp ?rpm ?tempIn ?tempReturn
+WHERE {
+
+  #Recooler RPM observations over 70% on 01.01.2026
+  ?rpmObs sosa:madeBySensor ex:ReCoolerRotationSpeedSensor ;
+          sosa:hasSimpleResult ?rpm ;
+          sosa:resultTime ?timestamp .
+
+  FILTER(?timestamp >= "2026-01-01T00:00:00"^^xsd:dateTime &&
+         ?timestamp <= "2026-01-01T23:59:59"^^xsd:dateTime)
+
+  FILTER(?rpm > 70)
+
+  #Flow IN temperature at same timestamp
+  ?inObs sosa:madeBySensor ex:ReCoolerFlowInTemperatureSensor ;
+         sosa:hasSimpleResult ?tempIn ;
+         sosa:resultTime ?timestamp .
+
+  #Flow RETURN temperature at same timestamp
+  ?retObs sosa:madeBySensor ex:ReCoolerFlowReturnTemperatureSensor ;
+          sosa:hasSimpleResult ?tempReturn ;
+          sosa:resultTime ?timestamp .
+}
+ORDER BY ?timestamp

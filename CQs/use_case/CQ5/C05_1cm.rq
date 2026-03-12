@@ -1,0 +1,33 @@
+# 1. Does the available number of heat pumps differ from the installed number of heat pumps?
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX hpcc: <http://example.org/hpcc#>
+PREFIX ex: <http://example.org/individuals#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT (xsd:integer(?rawAvailable) AS ?availableCount) ?installedCount
+WHERE {
+  #1: Latest available heat pump count
+  {
+    SELECT ?rawAvailable
+    WHERE {
+      ?obs a sosa:Observation ;
+           sosa:hasSimpleResult ?rawAvailable ;
+           sosa:madeBySensor ex:GeneralRefrigerationNumberOfHeatPumpsAvailableSensor ;
+           sosa:resultTime ?t .
+    }
+    ORDER BY DESC(?t)
+    LIMIT 1
+  }
+
+  #2: Installed heat pumps
+  {
+    SELECT (COUNT(DISTINCT ?platform) AS ?installedCount)
+    WHERE {
+      ?sensor a hpcc:HeatPumpSensor ;
+              sosa:isHostedBy ?platform .
+    }
+  }
+}
+
+

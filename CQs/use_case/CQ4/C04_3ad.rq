@@ -1,0 +1,33 @@
+# 3. Which sensors breach their target value tolerance? 
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX hpcc: <http://example.org/hpcc#>
+PREFIX ex: <http://example.org/individuals#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+
+SELECT ?observation ?obsValue ?targetValue ?toleranceValue
+WHERE {
+  # Observation
+  ?observation a sosa:Observation ;
+               sosa:madeBySensor ?sensor ;
+               sosa:resultTime ?timestamp ;
+               sosa:hasSimpleResult ?obsValue .
+
+  # Target value (unit ≠ K)
+  ?sensor hpcc:hasTargetValue ?targetNode .
+  ?targetNode qudt:numericValue ?targetValue ;
+              qudt:hasUnit ?targetUnit .
+  FILTER(?targetUnit != ex:K)
+
+  # Tolerance value (unit = K)
+  ?sensor hpcc:hasTargetValue ?tolNode .
+  ?tolNode qudt:numericValue ?toleranceValue ;
+           qudt:hasUnit ex:K .
+
+  # Breach condition: |obs - target| > tolerance
+  FILTER( ABS(?obsValue - ?targetValue) > ?toleranceValue )
+
+  # Optional: restrict to a date
+  FILTER(STRSTARTS(STR(?timestamp), "2026-01-21"))
+}

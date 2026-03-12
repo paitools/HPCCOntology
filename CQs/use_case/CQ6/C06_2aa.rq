@@ -1,0 +1,28 @@
+# 2. In case of sudden system failure, which sensors/platforms are affected?
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <http://example.org/individuals#>
+
+SELECT ?sensor ?obsValue ?meanvalue
+WHERE {
+  {
+    SELECT ?sensor (AVG(?val) AS ?meanvalue)
+    WHERE {
+      ?obs sosa:madeBySensor ?sensor ;
+           sosa:hasSimpleResult ?val ;
+           sosa:resultTime ?time .
+      FILTER(?time >= "2026-01-21T19:49:00"^^xsd:dateTime &&
+             ?time <= "2026-01-21T19:59:00"^^xsd:dateTime)
+    }
+    GROUP BY ?sensor
+  }
+  ?sensorObs sosa:madeBySensor ?sensor ;
+             sosa:hasSimpleResult ?obsValue ;
+             sosa:resultTime ?timestamp .
+  FILTER(?timestamp >= "2026-01-21T19:49:00"^^xsd:dateTime &&
+         ?timestamp <= "2026-01-21T19:59:00"^^xsd:dateTime)
+
+  FILTER(?obsValue > 1.2 * ?meanvalue)
+}
+ORDER BY ?timestamp

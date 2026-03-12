@@ -1,0 +1,33 @@
+# 6. How much does the outside temperature deviate from its mean value?
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <http://example.org/individuals#>
+PREFIX hpcc: <http://example.org/hpcc#>
+
+SELECT ?obs ?value ?meanValue ((?value) - (?meanValue) AS ?delta)
+WHERE {
+
+  #find the latest timestamp
+  {
+    SELECT (MAX(?t) AS ?latestTime)
+    WHERE {
+      ?o a sosa:Observation ;
+         sosa:madeBySensor ex:GeneralOutSideTemperatureSensor ;
+         sosa:resultTime ?t .
+    }
+  }
+
+  #get the mean value
+  ?meanObs a hpcc:MeanObservation ;
+           sosa:madeBySensor ex:GeneralOutSideTemperatureSensor ;
+           sosa:hasSimpleResult ?meanValue .
+
+  #get the latest observation
+  ?obs a sosa:Observation ;
+       sosa:madeBySensor ex:GeneralOutSideTemperatureSensor ;
+       sosa:resultTime ?timestamp ;
+       sosa:hasSimpleResult ?value .
+
+  FILTER(?timestamp = ?latestTime)
+}

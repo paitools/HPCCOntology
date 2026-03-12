@@ -1,0 +1,24 @@
+# 5. Did any system have an inactive status today? 
+
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <http://example.org/individuals#>
+
+SELECT DISTINCT ?platform ?sensor
+WHERE {
+  # Sensor hosted by platform
+  ?sensor sosa:isHostedBy ?platform ;
+          sosa:observes ex:Status .
+
+  # Observations
+  ?obs a sosa:Observation ;
+       sosa:resultTime ?timestamp ;
+       sosa:madeBySensor ?sensor ;
+       sosa:hasSimpleResult ?value .
+
+  FILTER(?value = 0.0)
+  # Only observations from 2026‑01‑21
+  FILTER(STRSTARTS(STR(?timestamp), "2026-01-21"))
+}
+
+

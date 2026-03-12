@@ -1,0 +1,101 @@
+
+##########################################################
+####################    GENERAL    #######################
+##########################################################
+
+----------------------------------------------------------
+C01: Sensor & Properties
+----------------------------------------------------------
+
+General
+1. What types of sensors are installed in the HPC cooling system? 
+2. What physical properties do these HPC sensors observe? 
+3. What virtual sensors are present in the system? 
+4. Which sensors are monitoring the HPC cooling system? 
+
+System Specific
+1. What are the pressure measuring sensors in the system? 
+2. Which heat exchanger sensors measure temperature? 
+3. What properties are assigned to heat exchanger primary flow-in temperature sensor?
+4. Which sensors measure differential pressure? 
+5. What is the current operational state of the system?
+6. What are the binary sensors in the system?
+
+
+----------------------------------------------------------
+C02: Platform & TargetValue 
+----------------------------------------------------------
+
+General
+1. Which sensor hosting platforms are available in the system?
+2. Which units are assigned to the sensor target values? 
+3. Which sensor types do not have a hosting platform? 
+4. Which sensors have dedicated target value tolerances?
+
+System Specific
+1. Which platform hosts the free cooler status sensor?
+2. What is the relation between sensors, observed properties, and target tolerances?
+3. What is the target value of the cooler flow-in temperature sensor?
+4. How many heat pumps are installed in the HPC cooling system?
+5. What target values are assigned to the cooling sensors?
+
+
+----------------------------------------------------------
+C03: Observations & Features
+----------------------------------------------------------
+
+General
+1. What special types of observations are available in the system?
+2. What are the features of interest in the HPC cooling system?
+3. What are the mean observations of sensors measuring temperature? 
+4. How are the results of raw data observations represented?
+
+System Specific
+1. What is the average recooler flow-in pressure?
+2. What was the latest recorded temperature of the HeatPump06?
+3. What is the average value of the UP1 inlet pump pressure sensor during the last week?
+4. What is the maximum RPM value of the cooler UP3 rotation speed sensor on 01.02.2026?
+5. What unit do the observations of recooler pressure have?
+
+
+############################################################
+####################    USE CASES    #######################
+############################################################
+
+
+------------------------------------------------------------
+C04: Anomaly Detection 
+------------------------------------------------------------
+
+1. Which sensor measurements failed to reach target values?
+2. Which sensor measurements deviate more than 10% from target values?
+3. Which sensors breach their target value tolerance? 
+4. Which sensor measurements deviate more than 30% from their mean values? 
+5. Which sensor measurements have achieved negative differential pressure?
+6. When did the HPC cooling system move to emergency heating state?
+
+
+------------------------------------------------------------
+C05: Condition Monitoring 
+------------------------------------------------------------
+
+1. Does the available number of heat pumps differ from the installed number of heat pumps?
+2. What is the current value of the free cooler UP4 inlet pressure sensor? 
+3. What is the average temperature of the heat exchanger primary flow-in Temperature sensor today?
+4. Which sensors (platforms) have all zero measurements today?
+5. Did any system have an inactive status today? 
+6. How much does the outside temperature deviate from its mean value?
+7. Is the Recooler flow-return temperature value greater than the corresponding flow-in one?
+8. Is the FreeCooler flow-return temperature value greater than the corresponding flow-in one?   
+
+
+------------------------------------------------------------
+C06: Advanced Analytics 
+------------------------------------------------------------
+
+1. Which time period is critical for the HPC cooling system?
+2. In case of sudden system failure, which sensors/platforms are affected?
+3. How does external temperature influence the HPC cooling behaviour? 
+4. How does the average Cooler MV19 temperature change (drift) over the years?
+5. Which sensors deviated the most from the mean values in the last month? 
+6. What were the Recooler flow-in and flow-return temperature values on 01.01.2026 when the recooler RPM increased over 70 percent? 
