@@ -1,0 +1,264 @@
+<https://paitools.github.io/HPCCOntology/HPCC.owl> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<https://paitools.github.io/HPCCOntology/HPCC.owl> <http://www.w3.org/2002/07/owl#imports> <http://qudt.org/3.0.0/schema/qudt> .
+<https://paitools.github.io/HPCCOntology/HPCC.owl> <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/ns/sosa/> .
+<https://paitools.github.io/HPCCOntology/HPCC.owl> <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/ns/ssn/> .
+<https://paitools.github.io/HPCCOntology/HPCC.owl> <http://purl.org/dc/terms/created> "2026-02-09"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://paitools.github.io/HPCCOntology/HPCC.owl> <http://purl.org/dc/terms/creator> _:genid1 .
+_:genid1 <http://xmlns.com/foaf/0.1/name> "Pavle Ivanovic" .
+_:genid1 <http://xmlns.com/foaf/0.1/mbox> <mailto:ivanovip@hsu-hh.de> .
+_:genid1 <http://xmlns.com/foaf/0.1/homepage> <https://orcid.org/0000-0001-7757-094X> .
+_:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<https://paitools.github.io/HPCCOntology/HPCC.owl> <http://purl.org/dc/terms/creator> _:genid2 .
+_:genid2 <http://xmlns.com/foaf/0.1/name> "Shashini Wanniarachchi" .
+_:genid2 <http://xmlns.com/foaf/0.1/mbox> <mailto:wanniars@hsu-hh.de> .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<https://paitools.github.io/HPCCOntology/HPCC.owl> <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/> .
+<https://paitools.github.io/HPCCOntology/HPCC.owl> <http://purl.org/dc/terms/title> "HPCC – HPC Cooling Ontology" .
+<https://paitools.github.io/HPCCOntology/HPCC.owl> <http://www.w3.org/2000/01/rdf-schema#comment> "The HPCC Ontology provides a semantic model for representing HPC thermal management telemetry. It extends the W3C SSN/SOSA standard to capture HPC cooling concepts, including heat pumps, heat exchangers, pumps, coolers, and re-coolers. Designed for the datacenter thermal management domain, the ontology supports anomaly detection, real-time condition monitoring, and advanced system analytics."@en .
+<https://paitools.github.io/HPCCOntology/HPCC.owl> <http://xmlns.com/foaf/0.1/fundedBy> <http://example.org/individuals#DTEC> .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://xmlns.com/foaf/0.1/fundedBy
+<http://xmlns.com/foaf/0.1/fundedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://xmlns.com/foaf/0.1/homepage
+<http://xmlns.com/foaf/0.1/homepage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://xmlns.com/foaf/0.1/mbox
+<http://xmlns.com/foaf/0.1/mbox> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://example.org/hpcc#hasTargetValue
+<http://example.org/hpcc#hasTargetValue> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://example.org/hpcc#hasTargetValue> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/sosa/Sensor> .
+<http://example.org/hpcc#hasTargetValue> <http://www.w3.org/2000/01/rdf-schema#range> <http://example.org/hpcc#TargetValue> .
+<http://example.org/hpcc#hasTargetValue> <http://www.w3.org/2000/01/rdf-schema#comment> "Links a sensor to its corresponding target value or target tolerance, where the distinction is inferred from the associated measurement unit." .
+<http://example.org/hpcc#hasTargetValue> <http://www.w3.org/2000/01/rdf-schema#label> "has target value" .
+# 
+# http://example.org/hpcc#setForSensor
+<http://example.org/hpcc#setForSensor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://example.org/hpcc#setForSensor> <http://www.w3.org/2000/01/rdf-schema#domain> <http://example.org/hpcc#TargetValue> .
+<http://example.org/hpcc#setForSensor> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/sosa/Sensor> .
+<http://example.org/hpcc#setForSensor> <http://www.w3.org/2000/01/rdf-schema#comment> "Inverse of hpcc:hasTargetValue, linking a target value or target tolerance to the corresponding sensor." .
+<http://example.org/hpcc#setForSensor> <http://www.w3.org/2000/01/rdf-schema#label> "set for sensor" .
+# 
+# http://qudt.org/schema/qudt/hasUnit
+<http://qudt.org/schema/qudt/hasUnit> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://qudt.org/schema/qudt/hasUnit> <http://www.w3.org/2000/01/rdf-schema#range> <http://qudt.org/schema/qudt/Unit> .
+<http://qudt.org/schema/qudt/Unit> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://qudt.org/schema/qudt/hasUnit> <http://www.w3.org/2000/01/rdf-schema#label> "has unit" .
+# 
+# http://www.w3.org/ns/sosa/hasFeatureOfInterest
+<http://www.w3.org/ns/sosa/hasFeatureOfInterest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/sosa/hasFeatureOfInterest> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/sosa/Observation> .
+<http://www.w3.org/ns/sosa/hasFeatureOfInterest> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/sosa/FeatureOfInterest> .
+<http://www.w3.org/ns/sosa/hasFeatureOfInterest> <http://www.w3.org/2000/01/rdf-schema#label> "has feature of interest" .
+# 
+# http://www.w3.org/ns/sosa/hosts
+<http://www.w3.org/ns/sosa/hosts> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/sosa/hosts> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/sosa/Platform> .
+<http://www.w3.org/ns/sosa/hosts> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/sosa/Sensor> .
+<http://www.w3.org/ns/sosa/hosts> <http://www.w3.org/2000/01/rdf-schema#label> "hosts" .
+# 
+# http://www.w3.org/ns/sosa/isFeatureOfInterestOf
+<http://www.w3.org/ns/sosa/isFeatureOfInterestOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/sosa/isFeatureOfInterestOf> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/sosa/FeatureOfInterest> .
+<http://www.w3.org/ns/sosa/isFeatureOfInterestOf> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/sosa/Observation> .
+<http://www.w3.org/ns/sosa/isFeatureOfInterestOf> <http://www.w3.org/2000/01/rdf-schema#label> "is feature of interest of" .
+# 
+# http://www.w3.org/ns/sosa/isHostedBy
+<http://www.w3.org/ns/sosa/isHostedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/sosa/isHostedBy> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/sosa/Sensor> .
+<http://www.w3.org/ns/sosa/isHostedBy> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/sosa/Platform> .
+<http://www.w3.org/ns/sosa/isHostedBy> <http://www.w3.org/2000/01/rdf-schema#label> "is hosted by" .
+# 
+# http://www.w3.org/ns/sosa/isObservedBy
+<http://www.w3.org/ns/sosa/isObservedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/sosa/isObservedBy> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/sosa/ObservableProperty> .
+<http://www.w3.org/ns/sosa/isObservedBy> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/sosa/Sensor> .
+<http://www.w3.org/ns/sosa/isObservedBy> <http://www.w3.org/2000/01/rdf-schema#label> "is observed by" .
+# 
+# http://www.w3.org/ns/sosa/madeBySensor
+<http://www.w3.org/ns/sosa/madeBySensor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/sosa/madeBySensor> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/sosa/Observation> .
+<http://www.w3.org/ns/sosa/madeBySensor> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/sosa/Sensor> .
+<http://www.w3.org/ns/sosa/madeBySensor> <http://www.w3.org/2000/01/rdf-schema#label> "made by sensor" .
+# 
+# http://www.w3.org/ns/sosa/madeObservation
+<http://www.w3.org/ns/sosa/madeObservation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/sosa/madeObservation> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/sosa/Sensor> .
+<http://www.w3.org/ns/sosa/madeObservation> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/sosa/Observation> .
+<http://www.w3.org/ns/sosa/madeObservation> <http://www.w3.org/2000/01/rdf-schema#label> "made observation" .
+# 
+# http://www.w3.org/ns/sosa/observedProperty
+<http://www.w3.org/ns/sosa/observedProperty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/sosa/observedProperty> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/sosa/Observation> .
+<http://www.w3.org/ns/sosa/observedProperty> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/sosa/ObservableProperty> .
+<http://www.w3.org/ns/sosa/observedProperty> <http://www.w3.org/2000/01/rdf-schema#label> "observed property" .
+# 
+# http://www.w3.org/ns/sosa/observes
+<http://www.w3.org/ns/sosa/observes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/sosa/observes> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/sosa/Sensor> .
+<http://www.w3.org/ns/sosa/observes> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/sosa/ObservableProperty> .
+<http://www.w3.org/ns/sosa/observes> <http://www.w3.org/2000/01/rdf-schema#label> "observes" .
+# 
+# http://www.w3.org/ns/ssn/detects
+<http://www.w3.org/ns/ssn/detects> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/ssn/detects> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/sosa/Sensor> .
+<http://www.w3.org/ns/ssn/detects> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/sosa/Stimulus> .
+<http://www.w3.org/ns/ssn/detects> <http://www.w3.org/2000/01/rdf-schema#label> "detects" .
+# 
+# http://www.w3.org/ns/ssn/hasSubSystem
+<http://www.w3.org/ns/ssn/hasSubSystem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/ssn/hasSubSystem> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/ssn/System> .
+<http://www.w3.org/ns/ssn/hasSubSystem> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/ssn/System> .
+<http://www.w3.org/ns/ssn/hasSubSystem> <http://www.w3.org/2000/01/rdf-schema#label> "has subsystem" .
+# 
+# http://www.w3.org/ns/ssn/isProxyFor
+<http://www.w3.org/ns/ssn/isProxyFor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/ns/ssn/isProxyFor> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/sosa/Stimulus> .
+<http://www.w3.org/ns/ssn/isProxyFor> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/sosa/ObservableProperty> .
+<http://www.w3.org/ns/ssn/isProxyFor> <http://www.w3.org/2000/01/rdf-schema#label> "is proxy for" .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# http://qudt.org/schema/qudt/numericValue
+<http://qudt.org/schema/qudt/numericValue> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://qudt.org/schema/qudt/numericValue> <http://www.w3.org/2000/01/rdf-schema#label> "numeric value" .
+# 
+# http://www.w3.org/ns/sosa/hasSimpleResult
+<http://www.w3.org/ns/sosa/hasSimpleResult> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://www.w3.org/ns/sosa/hasSimpleResult> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/sosa/Observation> .
+<http://www.w3.org/ns/sosa/hasSimpleResult> <http://www.w3.org/2000/01/rdf-schema#label> "has simple result" .
+# 
+# http://www.w3.org/ns/sosa/resultTime
+<http://www.w3.org/ns/sosa/resultTime> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://www.w3.org/ns/sosa/resultTime> <http://www.w3.org/2000/01/rdf-schema#domain> <http://www.w3.org/ns/sosa/Observation> .
+<http://www.w3.org/ns/sosa/resultTime> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://www.w3.org/ns/sosa/resultTime> <http://www.w3.org/2000/01/rdf-schema#label> "result time" .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://example.org/hpcc#CoolerSensor
+<http://example.org/hpcc#CoolerSensor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/hpcc#CoolerSensor> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/Sensor> .
+<http://example.org/hpcc#CoolerSensor> <http://www.w3.org/2000/01/rdf-schema#comment> "Represents sensors monitoring Cooler units." .
+<http://example.org/hpcc#CoolerSensor> <http://www.w3.org/2000/01/rdf-schema#label> "Cooler Sensor" .
+# 
+# http://example.org/hpcc#FreeCoolerSensor
+<http://example.org/hpcc#FreeCoolerSensor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/hpcc#FreeCoolerSensor> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/Sensor> .
+<http://example.org/hpcc#FreeCoolerSensor> <http://www.w3.org/2000/01/rdf-schema#comment> "Represents sensors monitoring Free Cooler units." .
+<http://example.org/hpcc#FreeCoolerSensor> <http://www.w3.org/2000/01/rdf-schema#label> "Free Cooler Sensor" .
+# 
+# http://example.org/hpcc#GeneralSensor
+<http://example.org/hpcc#GeneralSensor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/hpcc#GeneralSensor> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/Sensor> .
+<http://example.org/hpcc#GeneralSensor> <http://www.w3.org/2000/01/rdf-schema#comment> "Represents general sensors capturing system states, statuses, or unit-free measurements." .
+<http://example.org/hpcc#GeneralSensor> <http://www.w3.org/2000/01/rdf-schema#label> "General Sensor" .
+# 
+# http://example.org/hpcc#HeatExchangerSensor
+<http://example.org/hpcc#HeatExchangerSensor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/hpcc#HeatExchangerSensor> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/Sensor> .
+<http://example.org/hpcc#HeatExchangerSensor> <http://www.w3.org/2000/01/rdf-schema#comment> "Represents sensors monitoring Heat Exchanger units." .
+<http://example.org/hpcc#HeatExchangerSensor> <http://www.w3.org/2000/01/rdf-schema#label> "Heat Exchanger Sensor" .
+# 
+# http://example.org/hpcc#HeatPumpSensor
+<http://example.org/hpcc#HeatPumpSensor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/hpcc#HeatPumpSensor> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/Sensor> .
+<http://example.org/hpcc#HeatPumpSensor> <http://www.w3.org/2000/01/rdf-schema#comment> "Represents sensors monitoring Heat Pump units." .
+<http://example.org/hpcc#HeatPumpSensor> <http://www.w3.org/2000/01/rdf-schema#label> "Heat Pump Sensor" .
+# 
+# http://example.org/hpcc#MeanObservation
+<http://example.org/hpcc#MeanObservation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/hpcc#MeanObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://qudt.org/schema/qudt/QuantityValue> .
+<http://example.org/hpcc#MeanObservation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/Observation> .
+<http://example.org/hpcc#MeanObservation> <http://www.w3.org/2000/01/rdf-schema#comment> "Represents the calculated mean values of a particular sensors." .
+<http://example.org/hpcc#MeanObservation> <http://www.w3.org/2000/01/rdf-schema#label> "Mean Observation" .
+# 
+# http://example.org/hpcc#PumpSensor
+<http://example.org/hpcc#PumpSensor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/hpcc#PumpSensor> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/Sensor> .
+<http://example.org/hpcc#PumpSensor> <http://www.w3.org/2000/01/rdf-schema#comment> "Represents sensors monitoring standalone pump units." .
+<http://example.org/hpcc#PumpSensor> <http://www.w3.org/2000/01/rdf-schema#label> "Pump Sensor" .
+# 
+# http://example.org/hpcc#RecoolerSensor
+<http://example.org/hpcc#RecoolerSensor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/hpcc#RecoolerSensor> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/sosa/Sensor> .
+<http://example.org/hpcc#RecoolerSensor> <http://www.w3.org/2000/01/rdf-schema#comment> "Represents sensors monitoring Recooler units." .
+<http://example.org/hpcc#RecoolerSensor> <http://www.w3.org/2000/01/rdf-schema#label> "Recooler Sensor" .
+# 
+# http://example.org/hpcc#TargetValue
+<http://example.org/hpcc#TargetValue> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://example.org/hpcc#TargetValue> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://qudt.org/schema/qudt/QuantityValue> .
+<http://example.org/hpcc#TargetValue> <http://www.w3.org/2000/01/rdf-schema#comment> "Represents target values or target tolerances of particular sensors." .
+<http://example.org/hpcc#TargetValue> <http://www.w3.org/2000/01/rdf-schema#label> "Target Value" .
+# 
+# http://qudt.org/schema/qudt/QuantityValue
+<http://qudt.org/schema/qudt/QuantityValue> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://qudt.org/schema/qudt/QuantityValue> <http://www.w3.org/2000/01/rdf-schema#label> "Quantity value" .
+# 
+# http://qudt.org/schema/qudt/Unit
+# 
+# http://www.w3.org/ns/sosa/FeatureOfInterest
+<http://www.w3.org/ns/sosa/FeatureOfInterest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/sosa/FeatureOfInterest> <http://www.w3.org/2000/01/rdf-schema#label> "FeatureOfInterest" .
+# 
+# http://www.w3.org/ns/sosa/ObservableProperty
+<http://www.w3.org/ns/sosa/ObservableProperty> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/sosa/ObservableProperty> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/ssn/Property> .
+<http://www.w3.org/ns/sosa/ObservableProperty> <http://www.w3.org/2000/01/rdf-schema#label> "ObservableProperty" .
+# 
+# http://www.w3.org/ns/sosa/Observation
+<http://www.w3.org/ns/sosa/Observation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/sosa/Observation> <http://www.w3.org/2000/01/rdf-schema#label> "Observation" .
+# 
+# http://www.w3.org/ns/sosa/Platform
+<http://www.w3.org/ns/sosa/Platform> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/sosa/Platform> <http://www.w3.org/2000/01/rdf-schema#label> "Platform" .
+# 
+# http://www.w3.org/ns/sosa/Sensor
+<http://www.w3.org/ns/sosa/Sensor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/sosa/Sensor> <http://www.w3.org/2000/01/rdf-schema#label> "Sensor" .
+# 
+# http://www.w3.org/ns/sosa/Stimulus
+<http://www.w3.org/ns/sosa/Stimulus> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/sosa/Stimulus> <http://www.w3.org/2000/01/rdf-schema#label> "Stimulus" .
+# 
+# http://www.w3.org/ns/ssn/System
+<http://www.w3.org/ns/ssn/System> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://www.w3.org/ns/ssn/System> <http://www.w3.org/2000/01/rdf-schema#label> "System" .
+# 
+# http://xmlns.com/foaf/0.1/Person
+<http://xmlns.com/foaf/0.1/Person> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/
