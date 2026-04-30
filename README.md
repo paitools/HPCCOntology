@@ -19,7 +19,7 @@ The HPCC Ontology provides a semantic model for representing HPC thermal managem
 
 Ontology Specification with permanent `w3id.org` identifier:
 
-[![Documentation](https://img.shields.io/badge/Documentation-HPCC_Ontology-blue)](https://paitools.github.io/HPCCOntology/documentation/HPCC_Ontology_v2_crop.png)
+[![Documentation](https://img.shields.io/badge/Documentation-HPCC_Ontology-blue)](https://paitools.github.io/HPCCOntology/docs/index-en.html)
 
 ## HPCCool User Guide
 
