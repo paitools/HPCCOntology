@@ -8,7 +8,7 @@ HPCCool is a semantic integration framework that bridges ontological system repr
 ## HPCC Ontology:
 
 <p align="center">
-  <img src="documentation/HPCC_Ontology_v2_crop.png" width="90%" alt="HPCC Ontology">
+  <img src="docs/resources//HPCC_Ontology_v2_crop.png" width="90%" alt="HPCC Ontology">
   <br><em>HPCC Ontology: The core concepts and semantic relationships</em>
 </p>
 
