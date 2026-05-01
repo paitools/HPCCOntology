@@ -71,3 +71,7 @@ All resources are licensed under the [Creative Commons Attribution-NonCommercial
 
 ![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)
 
+
+## Citation
+
+Ivanovic, P., & Wanniarachchi, S. (2026). paitools/HPCCOntology: HPCCool/HPCC v1.0: Pre-publication Release. Zenodo. https://doi.org/10.5281/zenodo.19947986
