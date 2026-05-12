@@ -63,7 +63,7 @@ Requirements
 Ensure both are installed before running the framework. 
 If compatibility issues occur, use the exact versions listed above.
 
-### Changing Logging Structure and File Format
+## Changing Logging Structure and File Format
 
 Let's say we want to change the logging path to a different structure or directory (e.g., `/home/logs/*.parquet`).
 
