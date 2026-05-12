@@ -63,7 +63,34 @@ Requirements
 Ensure both are installed before running the framework. 
 If compatibility issues occur, use the exact versions listed above.
 
+### Changing Logging Structure and File Format
 
+Let's say we want to change the logging path to a different structure or directory (e.g., `/home/logs/*.parquet`).
+
+Like before, in the HPCCool.py source code, set the `data_structure` to the new logging structure `/home/logs/*.parquet`
+
+However, this time, the file format is changed from `csv` to `parquet` and we need to change the message log reading function accordingly.
+
+Now, search for messagelog view and change the `read_csv_auto()` function to `read_parquet()`. Notice that `data_structure` will also receive the newly configured value.
+
+Save the changes and redeploy the framework:
+
+```bash
+python3 HPCCool.py
+```
+
+Result: HPCCool now operates with the new logging structure and `parquet` file format.
+
+
+### Supported Formats
+
+| Format   | Function         |
+|----------|------------------|
+| csv      | read_csv_auto()  |
+| json     | read_json()      |
+| tsv      | read_csv_auto()  |
+| parquet  | read_parquet()   |
+| jsonl    | read_ndjson()    |
 
 ## License
 
